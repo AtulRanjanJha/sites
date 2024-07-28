@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike IN</title>
+    <link rel="icon" href="https://images.ctfassets.net/v3n26e09qg2r/1kIEPP0UZriFc9KcYI1Vik/2b0927935a072cd74059c653304ef1de/partnerships-icon-nike.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.typekit.net/your-font-kit-id.css">
+    <style>
+        body {
+            font-family: 'Helvetica Now Display', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .logos img {
+            width: 60px;
+            height: 48px;
+            margin-left: 20px;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .navbar ul li {
+            margin: 15px 15px;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: black;
+            padding: 8px 15px;
+            transition: background-color 0.3s;
+        }
+        .navbar ul li a:hover {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        .menu-button {
+            display: none;
+            font-size: 24px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .marquee-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .marquee-button button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-23,
+.btn-23 *,
+.btn-23 :after,
+.btn-23 :before,
+.btn-23:after,
+.btn-23:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-23 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  text-transform: uppercase;
+  width: 150px;
+}
+
+.btn-23:disabled {
+  cursor: default;
+}
+
+.btn-23:-moz-focusring {
+  outline: auto;
+}
+
+.btn-23 svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.btn-23 [hidden] {
+  display: none;
+}
+
+.btn-23 {
+  border-radius: 99rem;
+  border-width: 2px;
+  overflow: hidden;
+  padding: 0.8rem 3rem;
+  position: absolute;
+  top: 50px; /* Adjust the distance from the top as needed */
+  right: 60px; /* Adjust the distance from the right as needed */
+}
+
+.btn-23 span {
+  display: grid;
+  inset: 0;
+  place-items: center;
+  position: absolute;
+  transition: opacity 0.2s ease;
+}
+
+.btn-23 .marquee {
+  --spacing: 5em;
+  --start: 0em;
+  --end: 5em;
+  -webkit-animation: marquee 1s linear infinite;
+  animation: marquee 1s linear infinite;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  opacity: 0;
+  position: relative;
+  text-shadow: #fff var(--spacing) 0, #fff calc(var(--spacing) * -1) 0,
+    #fff calc(var(--spacing) * -2) 0;
+}
+
+.btn-23:hover .marquee {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+  opacity: 1;
+}
+
+.btn-23:hover .text {
+  opacity: 0;
+}
+
+@-webkit-keyframes marquee {
+  0% {
+    transform: translateX(var(--start));
+  }
+
+  to {
+    transform: translateX(var(--end));
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(var(--start));
+  }
+
+  to {
+    transform: translateX(var(--end));
+  }
+}
+
+        .section {
+            padding: 100px 20px;
+            min-height: 100vh;
+        }
+        #home { 
+            background-color: #f9f9f9;
+            position: relative; /* Added to contain the absolutely positioned video */
+            overflow: hidden; /* Ensure the video doesn't overflow the section */
+        }
+        #about { background-color: #efefef; }
+        #services { background-color: #f9f9f9; }
+        #portfolio { background-color: #efefef; }
+        #blog { background-color: #f9f9f9; }
+        #contact { background-color: #efefef; }
+        #faq { background-color: #f9f9f9; }
+        #terms { background-color: #efefef; }
+        #privacy { background-color: #f9f9f9; }
+
+        /* Add this CSS at the end of your existing CSS */
+
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 768px) {
+    /* Navbar */
+    .btn-23{
+        margin-top: -8px;
+        width:20px;
+        margin-right: -30px;
+    }
+    .navbar {
+        padding: 10px; /* Adjust padding */
+    }
+    .navbar .logos img {
+        width: 40px; /* Adjust logo size */
+        height: auto;
+        margin-left: 10px; /* Adjust logo margin */
+    }
+    .navbar ul {
+        display: none; /* Hide menu items by default */
+        flex-direction: column;
+        width: 100%;
+        position: fixed;
+        top: 60px; /* Adjust menu top position */
+        left: 0;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+        z-index: 999; /* Adjust z-index */
+        padding-top: 10px; /* Adjust padding */
+    }
+    .navbar ul.show {
+        display: flex; /* Show menu items when menu is active */
+    }
+    .navbar ul li {
+        margin: 10px 0; /* Adjust menu item margin */
+        text-align: center;
+    }
+    .menu-button {
+        display: block; /* Show menu button */
+    }
+
+    /* Sections */
+    .section {
+        padding: 60px 20px; /* Adjust padding */
+    }
+    .section h1 {
+        font-size: 28px; /* Adjust heading font size */
+    }
+    .section p {
+        font-size: 16px; /* Adjust paragraph font size */
+    }
+    .section #home video {
+        width: 100%; /* Adjust video width */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Flex Cards */
+    .flex-container {
+        flex-direction: column; /* Stack flex cards vertically */
+        overflow-x: hidden; 
+
+    }
+    .flex-card {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 20px; /* Add bottom margin */
+        width: calc(100% - 120px); /* Adjust card width */
+    }
+    .sidebar {
+        display: none; /* Hide sidebar on smaller screens */
+    }
+    .extra-content p {
+        font-size: 24px; /* Adjust font size */
+        margin-bottom: 40px; /* Adjust margin */
+    }
+
+    /* FAQ */
+    .faq-item .answer {
+        display: block !important; /* Ensure answers are visible */
+    }
+}
+
+        .section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #blog {
+            background-color: #f9f9f9;
+        }
+
+        .blog-container {
+            display: flex;
+            flex-grow: 1;
+        }
+        #faq {
+    padding: 0px 20px;
+    margin-bottom: -290px;
+}
+
+        .flex-container {
+            flex: 3;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            margin-top: 20px;
+            height: 600px;
+            position: relative;
+        }
+
+    
+
+        .flex-card {
+            flex: 1;
+            margin-right: 20px;
+            padding: 210px;
+            border-radius: 0px;
+            transition: flex-grow 0.3s;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            color: rgb(11, 11, 11);
+        }
+
+        .flex-card h2,
+        .flex-card p {
+            color: rgb(252, 250, 250);
+        }
+
+        .flex-card:hover {
+            flex-grow: 8;
+        }
+
+        .card1 {
+            background-image: url('https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/cb28c551-b85b-479f-8fc3-40ad4e7c9ca4/nike-membership.jpg');
+        }
+
+        .card2 {
+            background-image: url('https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/cdfa87e8-3509-47a9-b7bc-2a51a2d02a7a/nike-membership.jpg');
+        }
+
+        .card3 {
+            background-image: url('https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/7eaf26fa-f9bf-4b5d-8fd9-d0e9717beb69/gifts-that-move-you-nike-com.jpg');
+        }
+
+        .card4 {
+            background-image: url('https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/37b262a3-c8c7-49e8-a29f-8d46bc8ab950/nike-membership.jpg');
+        }
+
+        .card5 {
+            background-image: url('https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/e631958f-4c69-40df-9a13-43dd92fdff1d/nike-basketball.jpg');
+        }
+
+        .extra-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .extra-content p {
+            padding: 0;
+            margin-top: 390px;
+            margin-bottom: 290px;
+            font-size: 60px;
+            margin-left: 330px;
+        }
+
+        @media (max-width: 950px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    .flex-card {
+        margin-right: 10px;
+        margin-bottom: 20px;
+        flex-grow: 1 !important;
+        flex: none;
+    }
+    .flex-card:hover {
+        flex-grow: 1;
+    }
+    .flex-container .flex-card:nth-child(n+3) {
+        display: none;
+    }
+    .kids-tile {
+        /* Other styles */
+        height: 600px; /* Adjust the height of each tile */
+    }
+}
+.section {
+    position: relative;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+.home video {
+    position: absolute;
+    top: 0%; /* Position video in the middle */
+    left: 0%;
+    min-height: 100%;
+    width: 30%;
+    height: auto;
+    z-index: -1;
+}
+.faq-item {
+    margin-bottom: -10px;
+}
+.question {
+    cursor: pointer;
+    font-weight: bold;
+}
+.question,
+.answer {
+    font-size: 18px;
+    padding: 10px 0;
+}
+.faq-item .answer {
+    display: none;
+}
+.faq-item.active .answer {
+    display: block;
+}
+.footer {
+    background-color: #f9f9f9;
+    color: #101010;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 40px;
+}
+.footer-column {
+    flex: 1;
+    margin-right: 20px;
+    margin-left: 100px;
+
+}
+.footer-column h3 {
+    font-size: 20px;
+}
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+.footer-links {
+    background-color: #f9f9f9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.footer-links a {
+    color: #080808;
+    text-decoration: none;
+    margin: 0 10px;
+}
+/* Add this CSS at the end of your existing CSS */
+
+/* Shoes section */
+.shoes-container {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: -40px;
+    margin-left: 10px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+.shoe-tile {
+    flex: 0 0 auto;
+    width: 360px; /* Adjust tile width */
+    margin-right: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    margin-left: 20px;
+
+}
+.tile-background {
+    height: 220px; /* Adjust tile height */
+    background-size: cover;
+    background-position: center;
+}
+.shoe-tile h2 {
+    margin: 0;
+    padding: 15px;
+    background-color: rgba(69, 69, 69, 0.148); /* Semi-transparent background */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #00000066;
+
+}
+.shoes-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+.shoe-row {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    margin-left: -20px;
+
+}
+
+.kid-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.kid-row {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    margin-left: -60px;
+
+}
+.kid-container {
+    display: flex;
+    overflow-x: auto;
+    margin-left: 10px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    height: 800px; /* Adjust the height of the container */
+    margin-bottom: 150px;
+    
+}
+
+.kid-tile {
+    flex: 0 0 auto;
+    width: 500px; /* Adjust the width of the tiles */
+    height: 700px; /* Set the height of each tile */
+    margin-right: -48px;
+    overflow: hidden;
+    text-decoration: none;
+    margin-left: 60px;
+    margin-bottom: 0px;
+}
+
+
+.kid-tile h1 {
+    margin: 0;
+    padding: 15px;
+    background-color: rgba(194, 191, 191, 0); /* Semi-transparent background */
+    color: #000000ee;
+    font-weight: 100;
+
+}
+.kids-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+
+}
+.kids-section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.kids-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.kids-tile {
+    flex: 1;
+    max-width: calc(50% - 10px); /* Adjust the width of tiles */
+    text-align: center;
+    text-decoration: none;
+    color: #e5e1e100;
+}
+
+.tile-background {
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+
+}
+
+.tile-background:hover {
+    opacity: 0.8;
+}
+.button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #0f0f0f;
+            border: none;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            width: 120px;
+            left: 50%;
+            text-decoration: none;
+        }
+        
+        .button:hover {
+            background-color: #525252;
+        }
+        .container {
+    display: flex;
+    justify-content: center;
+}
+span {
+  color: rgb(9, 9, 9);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+span:hover {
+  color: #484848;
+  text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logos">
+            <a href="#home"><img src="nike.png" alt="logo"></a>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="https://www.nike.com/in/kids">Kids</a></li>
+            <li><a href="https://www.nike.com/in/men">Mens</a></li>
+            <li><a href="https://www.nike.com/in/women">Womens</a></li>
+            <li><a href="https://www.nike.com/in/w/sale-3yaep">Sale</a></li>
+            <li><a href="https://www.nike.com/in/launch">Shoes</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="menu-button" onclick="toggleMenu()">☰</div>
+    </div>
+    <div id="home" class="section">
+        <p style="font-size: 80px; margin-top:-35px; margin-bottom: 20px;">Just do it</p> <!-- Adjusted font size and added font family -->
+        <video autoplay loop muted playsinline>
+            <source src="videoplayback.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <a href="#blog" class="btn-23" style="text-decoration: none;">
+            <span class="text" style="color: #ddd;">Sale</span>
+            <span aria-hidden="" class="marquee" style="color: #ddd; text-decoration: none;">sale</span>
+        </a>
+        <div style="margin-top: 70px; margin-bottom: 70px;">
+            <h3 style="text-align: center; margin-top: 60px; margin-bottom: 10px;">Nike Pegasus 41</h3>
+            <h1 style="text-align: center; margin-bottom: 10px; font-weight: 1700;">DON'T WASTE YOUR ENERGY</h1>
+            <p style="text-align: center;">Run in Pegasus. Feel the responsive energy return of Air Zoom and<br> all-new ReactX foam.</p>
+            <div class="container">
+                <button class="button" onclick="location.href='https://www.nike.com/in/w/pegasus-shoes-8nexhzy7ok'">Shop</button>
+            </div>
+        </div>
+        
+        
+          
+    </div>
+    <div id="kids" class="kids-section">
+        <h1 style="margin-left: 40px;">Featured</h1>
+        <div class="section">
+            <div class="kid-container">
+                <!-- Second row of tiles -->
+                <div class="kid-row">
+                    <a href="https://www.nike.com/in/w/air-max-dn-5ufej" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://images.footlocker.com/content/dam/final/footlockereurope/Online_activations/fl-campaign/2024/2024_01_22_fl_omni_nike_dn/05_final_output_files/striper-hub/2024_01_22_fl_omni_nike_dn_Striper_hub_story_800x800_05.jpg'); height: 650px;"></div>
+                        <h1>Air Max Dn</h1>
+                    </a>
+                    <a href="https://www.nike.com/w/workout-essentials-8e0y5" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/h_484,c_limit/b64a7d86-e023-410c-80dc-1156abdbc2bb/4-cute-workout-outfits-for-women.jpg'); height: 650px;"></div>
+                        <h1>Fitness Essential</h1>
+                    </a>
+                    <a href="https://www.nike.com/w/new-upcoming-drops-k0gk" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/32090ca9-d8ef-4943-aa41-4f23dc0777af/air-jordan-4-retro-oxidized-green-mens-shoes-PNtDJp.png'); height: 650px;"></div>
+                        <h1>Dropping this week</h1>
+                    </a>
+                    <a href="https://www.nike.com/in/w/best-basketball-3glsmz76m50" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/927150a3-b2e6-4bf9-afe9-2579c4fb58c7/nike-basketball.png'); height: 650px;"></div>
+                        <h1>Basketball Must-Have</h1>
+                    </a>
+                </div>
+            </div>
+            <div style="margin-top: -80px; margin-bottom: 210px;">
+                <p style="text-align: center; margin-bottom: 0px; font-size: 60px; "><b>SKY, NO LIMIT</b></p>
+                <p style="text-align: center;">Grind, slide, carve, flip - tackle every trick fearlessly and set no limits. Inspired by her heritage and canfidence skateboarding <br> inspires the young olympian.</p>
+                <div class="container">
+                    <button class="button" onclick="location.href='https://www.nike.com/in/launch/t/nike-sb-zoom-pogo-plus-x-sky-brown-white-and-sail'">Shop</button>
+                </div>
+            </div>
+            
+            <h1 style="margin-top: -50px;">Trending</h1>
+            <a href="https://www.nike.com/in/launch/t/nike-sb-zoom-pogo-plus-x-sky-brown-white-and-sail">            <img style="height: 600px; margin-left: -10px;" src="C:\Users\atul\OneDrive\Pictures\Screenshots\Screenshot 2024-06-16 224817.png" alt="">            </a>
+        </div>
+    </div>
+    
+    <div id="Womens" class="section" style="margin-bottom: -120px;">
+        <h1 style="font-weight: 100;">New this week</h1>
+        <div class="section">
+            <div class="kid-container">
+                <!-- Second row of tiles -->
+                <div class="kid-row">
+                    <a href="https://www.nike.com/in/t/tatum-2-sidewalk-chalk-pf-basketball-shoes-SjC3nc/FZ2203-600" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/fcb3546d-f3aa-4374-8a29-a0af4c21d86b/tatum-2-sidewalk-chalk-pf-basketball-shoes-SjC3nc.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Jordan<br><p style="margin-top: -15px; color: #7c7b7b;">Shoes</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 11 895.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/t/dunk-low-se-shoes-j89Csv" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5fe8b5a4-5a93-46d6-bb57-1df8250ebd94/dunk-low-se-shoes-j89Csv.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Dunk<br><p style="margin-top: -15px; color: #7c7b7b;">Women's Sneaker</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 11 895.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/w/pegasus-running-shoes-37v7jz8nexhzy7ok" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0558cdb5-4d42-4f4d-9b37-5038f1f97f9f/pegasus-41-road-running-shoes-RZm89S.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Nike Pegasus 41<br><p style="margin-top: -15px; color: #7c7b7b;">Women's Road Running Shoes</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 11 895.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/au/t/air-jordan-xxxvii-low-basketball-shoes-7x01GN" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ea83f861-5365-4e60-9a9f-cbf2c54a4f30/air-jordan-xxxvii-low-basketball-shoes-7x01GN.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Air Jordan XXXVIII Low PF<br><p style="margin-top: -15px; color: #7c7b7b;">Basketball Shoes</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 17 895.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/t/acg-air-deschutz-sandals-mnNkCZ" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/62d9cabc-ac99-4132-a9ca-53234a87203b/acg-air-deschutz-sandals-mnNkCZ.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Nike ACG Air Deschutz+<br><p style="margin-top: -15px; color: #7c7b7b;">Sandals</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 11 895.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/t/air-jordan-i-high-g-golf-shoes-qKzTBg/DQ0660-300" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d35c686b-f9e6-49cb-9381-9bcc79388e72/air-jordan-i-high-g-golf-shoes-qKzTBg.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Air Jordan I High G<br><p style="margin-top: -15px; color: #7c7b7b;">Men's Golf Shoes</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 16 995.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/t/air-max-koko-womens-sandals-gwRZGk/CW9705-200" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e7991abb-b18a-4a41-be28-bbb8951886c8/air-max-koko-sandals-w4Xp4m.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Nike Air Max Koko<br><p style="margin-top: -15px; color: #7c7b7b;">Women's Sandals</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 8 895.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/t/acg-watercat-shoes-V0Q39L" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/71e00539-c983-4783-94ab-e17197cbae2d/acg-watercat-shoes-V0Q39L.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Nike ACG Watercat+<br><p style="margin-top: -15px; color: #7c7b7b;">Shoes</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 11 495.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/t/calm-slides-K7mr3W/FD4116-001" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1285f968-cd8c-4309-ab57-96ea99876a92/calm-slides-K7mr3W.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Nike Calm<br><p style="margin-top: -15px; color: #7c7b7b;">Men's Sandals</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 7 095.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/t/air-vapormax-moc-roam-shoes-tLQxbN" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2059edb4-d652-437a-8b41-9d697e068813/air-vapormax-moc-roam-shoes-tLQxbN.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Nike Air VaporMax Moc Roam<br><p style="margin-top: -15px; color: #7c7b7b;">Men's Shoes</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 16 695.00</p></p>
+                    </a>
+                    <a href="https://www.nike.com/in/w/air-max-plus-shoes-ahvdnzy7ok" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/91886090-edd6-4468-b59b-fca498da0a0d/air-max-plus-3-shoes-HtMt7V.png'); height: 500px;"></div>
+                        <p style="font-size: 18px; color: #000; font-weight: 100;">Nike Air Max Plus<br><p style="margin-top: -15px; color: #7c7b7b;"> Men's Shoes</p> <br><p style="margin-top: -30px; color: #000;">MRP : ₹ 15 995.00</p></p>
+                    </a>
+
+                </div>
+            </div>
+            <h1 style="margin-top: -120px;  font-weight: 100; margin-bottom: 70px;">Don't Miss</h1>
+            <a href="https://www.nike.com/in/w/national-team-football-1gdj0zav9de">            <img style="height: 500px;" src="C:\Users\atul\OneDrive\Pictures\Screenshots\Screenshot 2024-06-17 111139.png" alt="">            </a>
+            <div style="margin-top: 140px; margin-bottom: 50px;">
+                <h1 style="text-align: center; margin-top: 80px; margin-bottom: --10px; margin-top: -10px;">Nike Football</h1>
+                <p style="text-align: center; margin-bottom: 0px; font-size: 70px; letter-spacing: 0px;"><b>2024 NATIONAL TEAM <br>COLLECTION</b></p>
+                <p style="text-align: center;">Featuring Dri-Fit ADV and built for the moment that matter most</p>
+                <div class="container">
+                    <button class="button" onclick="location.href='https://www.nike.com/in/w/national-team-football-1gdj0zav9de'">Shop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Womens" class="section" style="margin-top: -40px; margin-bottom: -440px;">
+        <h1 style="font-weight: 100;margin-left: 30px;margin-bottom: -20px;">Classic Spotlight</h1>
+        <div class="section">
+            <div class="kid-container">
+                <!-- Second row of tiles -->
+                <div class="kid-row">
+                    <a href="https://www.nike.com/w/jordan-1-shoes-4fokyzy7ok" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/7e662b16-9f5f-4e45-ac50-7adda2d24d22/air-jordan-1-retro-high-og-light-smoke-grey-dz5485-051-release-date.jpg'); height: 500px;"></div>
+                        <p style="margin-top: -55px;  text-align: center;z-index: 10px; font-size: 38px; color: #000; font-weight: 100;"><b>AIR JORDAN 1</b></p>
+                    </a>
+                    <a href="https://www.nike.com/in/w/dunk-shoes-90aohzy7ok" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/30c74871-c80f-4109-9a22-161a4a413ed8/dunk-low-next-nature-se-shoes-6b4JcJ.png'); height: 500px;"></div>
+                        <p style="margin-top: -55px;  z-index: 10px; text-align: center; font-size: 38px; color: #000;"><b>DUNK</b></p>
+                    </a>
+                    <a href="https://www.nike.com/in/w/blazer-shoes-9gw3azy7ok" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/68e31b88-19a5-435f-acc1-172b67e2f927/blazer-mid-77-shoes-0dJRSm.png'); height: 500px;"></div>
+                        <p style="margin-top: -55px;z-index: 10px;   text-align: center; font-size: 38px; color: #000; font-weight: 100;"><b>BLAZER</b></p>
+                    </a>
+                    <a href="https://www.nike.com/in/w/air-force-1-shoes-5sj3yzy7ok" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5de54772-b44b-4170-8ae6-214a0b131afc/air-force-1-shadow-shoes-DmvLlC.png'); height: 500px;"></div>
+                        <p style="margin-top: -55px;z-index: 10px;   text-align: center; font-size: 38px; color: #000; font-weight: 100;"><b>AIR FORCE 1</b></p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Womens" class="section" style="margin-bottom: -300px;">
+        <h1 style="font-weight: 100;margin-left: 30px;margin-bottom: -20px;">Shop by Sports</h1>
+        <div class="section">
+            <div class="kid-container">
+                <!-- Second row of tiles -->
+                <div class="kid-row">
+                    <a href="https://www.nike.com/in/basketball" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/h_363,c_limit/3e1ab7dc-771d-4c0d-8d34-63c0d67a3572/best-nike-basketball-shoes-for-guards.jpg'); height: 500px;"></div>
+                        <p style="margin-bottom: -15px; z-index: 10px; font-size: 18px; color: #000; font-weight: 100;">Nike Basketball</p>
+                        <p>Style Made for your game<br><br><span>Shop</span>.</p>
+                    </a>
+                    <a href="https://www.nike.com/golf" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://www.golfgetup.com/wp-content/uploads/2021/01/Brooks_Koepka_Nike.jpg'); height: 500px;"></div>
+                        <p style="margin-bottom: -15px; z-index: 10px; font-size: 18px; color: #000; font-weight: 100;"><b>Nike Golf</b></p>
+                        <p>Conquer any Course in Style<br><br><span>Shop</span>.</p>
+                    </a>
+                    <a href="https://www.nike.com/trail" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://theatlasheart.b-cdn.net/wp-content/uploads/2020/08/Guided-Hiking-Trip-REI.jpg'); height: 500px;"></div>
+                        <p style="margin-bottom: -15px; z-index: 10px; font-size: 18px; color: #000; font-weight: 100;"><b>Nike Trail</b></p>
+                        <p>Gear the lead to wild Places <br><br><span>Shop</span>.</p>
+                    </a>
+                    <a href="https://www.nike.com/tennis" class="kid-tile">
+                        <div class="tile-background" style="background-image: url('https://i.ebayimg.com/images/g/yLMAAOSwZoRkRVes/s-l1200.webp'); height: 500px;"></div>
+                        <p style="margin-bottom: -15px; z-index: 10px; font-size: 18px; color: #000; font-weight: 100;"><b>Nike Tennis</b></p>
+                        <p>Serve up in style <br><br><span>Shop</span>.</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="blog" class="section">
+        <h1>Sale</h1>
+        <div class="blog-container">
+            <div class="flex-container">
+                <!-- Flex Cards -->
+                <div class="flex-card card1">
+                    <p  style="margin-top: 280px; margin-left: -170px; color: #efefef; font-size: 16px;">Member Product<br>Exclusive Access<br><br><a href="https://www.nike.com/in/membership/member-product" style="text-decoration: none; color: #090909; background-color: #fffefe; border-radius: 19px; padding-right: 14px; padding-left: 14px; padding-top: 10px; padding-bottom: 10px;">Shop</a></p>
+                </div>
+                <div class="flex-card card2">
+                    <p  style="margin-top: 280px; margin-left: -170px; color: #efefef; font-size: 16px;">Nike By You<br>Customisation Service<br><br><a href="https://www.nike.com/in/nike-by-you" style="text-decoration: none; color: #090909; background-color: #fffefe; border-radius: 19px; padding-right: 14px; padding-left: 14px; padding-top: 10px; padding-bottom: 10px;">Coustomize</a></p>
+                </div>
+                <div class="flex-card card3">
+                    <p  style="margin-top: 280px; margin-left: -170px; color: #efefef; font-size: 16px;">Member Rewards<br>To Thank You<br><br><a href="https://www.nike.com/in/membership/member-rewards" style="text-decoration: none; color: #090909; background-color: #fffefe; border-radius: 19px; padding-right: 14px; padding-left: 14px; padding-top: 10px; padding-bottom: 10px;">Celebrate</a></p>
+                </div>
+                <div class="flex-card card4">
+                    <p  style="margin-top: 280px; margin-left: -170px; color: #efefef; font-size: 16px;">Member Days<br>A Celebration of You<br><br><a href="https://www.nike.com/in/membership/sport-wellness-apps" style="text-decoration: none; color: #090909; background-color: #fffefe; border-radius: 19px; padding-right: 14px; padding-left: 14px; padding-top: 10px; padding-bottom: 10px;">Learn More</a></p>
+                </div>
+                <div class="flex-card card5">
+                    <p  style="margin-top: 280px; margin-left: -170px; color: #efefef; font-size: 16px;">SNKRS<br>Ultimate Sneakers<br><br><a href="https://www.nike.com/in/launch" style="text-decoration: none; color: #090909; background-color: #fffefe; border-radius: 19px; padding-right: 14px; padding-left: 14px; padding-top: 10px; padding-bottom: 10px;">Explore</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="extra-content">
+            <p>Greatness is not born, it is made.</p>
+        </div>
+        <a href="https://www.nike.com/in/">            <img style="height: 600px; margin-left: 36vw; margin-top: -320px;" src="nik.png" alt="">            </a>
+
+    </div>
+       
+
+    </div>
+
+    
+    <div id="faq" class="section">
+        <h1>FAQ</h1>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="question">Q: Is Nike an American company?</div>
+                <div class="answer">A: Yes, Nike is an American multinational corporation.</div>
+            </div>
+            <hr> <!-- Line between questions -->
+            <div class="faq-item">
+                <div class="question">Q: When was Nike founded?</div>
+                <div class="answer">A: Nike was founded on January 25, 1964.</div>
+            </div>
+            <hr> <!-- Line between questions -->
+            <div class="faq-item">
+                <div class="question">Q: What does the Nike logo represent?</div>
+                <div class="answer">A: The Nike swoosh logo represents movement and speed.</div>
+            </div>
+            <hr> <!-- Line between questions -->
+            <div class="faq-item">
+                <div class="question">Q: Where is Nike's headquarters located?</div>
+                <div class="answer">A: Nike's headquarters is located near Beaverton, Oregon, in the Portland metropolitan area.</div>
+            </div>
+            <hr> <!-- Line between questions -->
+            <div class="faq-item">
+                <div class="question">Q: How many countries does Nike operate in?</div>
+                <div class="answer">A: Nike operates in more than 170 countries worldwide.</div>
+            </div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-column">
+            <br>
+            <h3>ICONS</h3>
+            <ul>
+                <li><a href="https://www.nike.com/in/w/air-force-1-shoes-5sj3yzy7ok" style="text-decoration: none;">Air Force 1</a><br></li>
+                <li><a href="https://www.nike.com/in/w/huarache-shoes-adlt2zy7ok" style="text-decoration: none;">Huarache</a><br></li>
+                <li><a href="https://www.nike.com/in/w/air-max-90-shoes-auqmozy7ok" style="text-decoration: none;">Air Max 90</a><br></li>
+                <li><a href="https://www.nike.com/in/w/air-max-95-shoes-b0mibzy7ok" style="text-decoration: none;">Air Max 95</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Shoes</h3>
+            <ul>
+                <li><a href="https://www.nike.com/in/w/shoes-y7ok" style="text-decoration: none;">All Shoes</a></li>
+                <li><a href="https://www.nike.com/in/w/nike-by-you-shoes-6ealhzy7ok" style="text-decoration: none;">Custom Shoes</a></li>
+                <li><a href="https://www.nike.com/in/w/jordan-shoes-37eefzy7ok" style="text-decoration: none;">Jordan Shoes</a></li>
+                <li><a href="https://www.nike.com/in/w/running-shoes-37v7jzy7ok" style="text-decoration: none;">Running Shoes</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Clothing</h3>
+            <ul>
+                <li><a href="https://www.nike.com/in/w/clothing-6ymx6" style="text-decoration: none;">All Clothing</a></li>
+                <li><a href="https://www.nike.com/in/w/modest-wear-22fj5" style="text-decoration: none;">Modest Wear</a></li>
+                <li><a href="https://www.nike.com/in/w/hoodies-sweatshirts-6rive" style="text-decoration: none;">Hoodies & Pullovers</a></li>
+                <li><a href="https://www.nike.com/in/w/tops-t-shirts-9om13" style="text-decoration: none;">Shirts & Tops</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-links">
+        <a href="https://about.nike.com/en">About Nike</a>
+        <a href="https://www.nike.com/in/help/#contact">Contact Us</a>
+        <a href="https://agreementservice.svs.nike.com/sg/en_gb/rest/agreement?agreementType=privacyPolicy&uxId=com.nike.unite&country=SG&language=en&requestType=redirect">Privacy Policy</a>
+        <a href="https://jobs.nike.com/">Carrers</a>
+        <a href="https://investors.nike.com/Home/default.aspx">Investors</a>
+        <a href="https://www.nike.com/in/help">Help</a>
+
+        <!-- Add more hyperlinks as needed -->
+    </div>
+    
+    
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+        const menuButton = document.querySelector('.menu-button');
+        const navUl = document.querySelector('.navbar ul');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                // Downscroll
+                navbar.style.top = '-80px';
+            } else {
+                // Upscroll
+                navbar.style.top = '0';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        function toggleMenu() {
+            navUl.classList.toggle('show');
+        }
+
+        window.addEventListener('click', function(event) {
+            if (!navUl.contains(event.target) && !menuButton.contains(event.target)) {
+                navUl.classList.remove('show');
+            }
+        });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(function(item) {
+            const question = item.querySelector('.question');
+            const answer = item.querySelector('.answer');
+
+            question.addEventListener('click', function() {
+                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    });
+
+    </script>
+    <script>
+        const clickableWord = document.querySelector('span');
+        clickableWord.addEventListener('click', () => {
+          // Add your desired action here, like opening a URL or displaying a message
+          alert('Word clicked!');
+        });
+        </script>
+</body>
+</html>
