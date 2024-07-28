@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple In</title>
+    <link rel="icon" href="https://static-00.iconduck.com/assets.00/apple-round-icon-512x512-qx3djm2m.png" type="image/x-icon">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .section-gap {
+            padding: 60px 20px;
+        }
+
+        .section-fullscreen {
+            height: 100vh;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(214, 211, 211);
+            margin-bottom: 20px;
+        }
+        
+        .overlay-content {
+            position: relative;
+            z-index: 1001;
+            text-align: center;
+        }
+
+        .section-fullscreen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0); /* Optional: darken the background image */
+            z-index: 0;
+        }
+
+        .button {
+            padding: 15px 20px;
+            background-color: #2d5df9;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .section-normal {
+            background-color: #f0f0f0;
+            margin-bottom: 60px;
+        }
+
+        .content {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 40vh;
+            z-index: 1;
+        }
+
+        .paragraph {
+            padding: 20px;
+            margin: 40px 0;
+        }
+
+        h2 {
+            margin: 0 0 10px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: rgba(113, 112, 112, 0);
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar .logos img {
+            width: 60px;
+            height: auto;
+        }
+
+        .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap into a new row */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Needed for absolute positioning of submenus */
+}
+
+.navbar ul li {
+    margin: 0 15px;
+    position: relative;
+}
+.navbar ul li:hover {
+    color: #faf9f9;
+}
+
+.navbar ul li:hover .submenu {
+    display: block; /* Show submenu on hover */
+
+}
+
+.navbar .submenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(241, 240, 240, 0.1); /* Optional: Add shadow for dropdown */
+    z-index: 1000;
+    top: 100%; /* Position submenu below parent item */
+    width: auto;
+    min-width: 200px; /* Adjust as needed */
+}
+
+.navbar .submenu li {
+    width: 100%;
+}
+
+.navbar .submenu li a {
+    display: block;
+    padding: 8px 15px;
+    color: #000000;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.navbar .submenu li a:hover {
+    background-color: #f0f0f0;
+}
+
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: rgb(248, 246, 246);
+            padding: 8px 15px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            color: #000;
+        }
+
+        .menu-button {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar .logos img {
+                width: 40px;
+                margin-left: 10px;
+            }
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                background-color: white;
+                border-bottom: 1px solid #86858544;
+                z-index: 999;
+                padding-top: 10px;
+                
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .menu-button {
+                display: block;
+                margin-right: 20px;
+            }
+
+            .navbar {
+                padding: 10px;
+                justify-content: space-between;
+            }
+            
+        }
+
+        .section-tiles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .tile {
+            height: 601px; /* Adjust height as needed */
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: contain; /* Ensure the image fits without zooming */
+            z-index: 0;
+        }
+
+        .tile-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .tile-content-top {
+            margin-top: 20px;
+        }
+
+        .tile-content-bottom {
+            margin-bottom: 20px;
+        }
+
+       
+        .footer {
+    background-color: #ffffff;
+    color: #5e5c5c;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    position: relative;
+    margin-bottom: 20px;
+    margin-left: 20px; /* Added margin */
+    margin-right: 20px; /* Added margin */
+}
+
+.footer-column {
+    margin: 0 10px; /* Reduced margin between columns */
+}
+
+.footer-column h3 {
+    font-size: 13px;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #000; /* Set link color to black */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline; /* Optional: underline on hover */
+}
+
+.footer-links {
+    background-color: #f9f9f9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    margin-left: 20px; /* Added margin */
+    margin-right: 20px; /* Added margin */
+}
+
+.footer-links a {
+    color: #080808; /* Set link color to black */
+    text-decoration: none; /* Remove underline */
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Optional: underline on hover */
+}
+.top-left {
+  position: absolute;
+  top: 280px;
+  left: 260px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar" >
+        <div class="logos">
+            <a href="#home"><img src="https://logodix.com/logo/995526.png" alt="logo" style="height: 17px;width: 17px; "></a>
+        </div>
+        <ul>
+            <li><a href="https://www.apple.com/in/store" style="color: #6c6b6b;">Store</a>
+            </li>
+            <li><a href="https://www.apple.com/in/mac/" style="color:#6c6b6b;">Mac</a>
+            </li>
+            <li><a href="https://www.apple.com/in/ipad/" style="color: #6c6b6b;">iPad</a>
+            </li>
+            <li><a href="https://www.apple.com/in/iphone/" style="color: #6c6b6b;">iPhone</a>
+            </li>
+            <li><a href="https://www.apple.com/in/watch/" style="color: #6c6b6b;">Watch</a>
+            </li>
+            <li><a href="https://www.apple.com/in/airpods/" style="color: #6c6b6b;">AirPods</a>
+            </li>
+            <li><a href="https://www.apple.com/in/services/" style="color: #6c6b6b;">Entertainment</a>
+            </li>
+            <li><a href="https://www.apple.com/in/shop/accessories/all" style="color: #6c6b6b;">Accessories</a>
+            </li>
+            <li><a href="https://support.apple.com/en-in" style="color: #6c6b6b;">Support</a>
+            </li>
+        </ul>
+        <div class="menu-button" onclick="toggleMenu()">☰</div>
+    </div>
+
+    <!-- Section 1 -->
+
+
+    <section class="section-fullscreen">
+        <div class="container" style="position: relative; height: 100vh; margin-top: -330px; margin-bottom: -10px;">
+            <img src="https://devimages-cdn.apple.com/wwdc-services/articles/images/B6D2ADBF-1563-457E-82CE-374A654AA6B0/2048.jpeg" style="margin-top: 100px; height: 100vh; width: 100vw;">
+            <a href="https://www.apple.com/in/education/mac/" class="button" style="position: absolute; top: 87%; left: 46%;">Learn More</a>
+        </div>
+    </section>
+    <!-- Section 2 -->
+<section class="section-fullscreen">
+    <div class="container" style="position: relative; height: 100vh; margin-top: -580px;">
+        <img src="https://media.wired.com/photos/6500b18a5502824638d75504/master/w_1600%2Cc_limit/Apple-iPhone-15-USB-C-Port.jpg" style="margin-top: 100px; height: 130vh; width: 100vw; ">
+        <p class="top-left" style="font-size: 80px; font-weight: 700; margin-left: 20%;">iPhone 15 Pro</p>
+        <a href="https://www.apple.com/in/shop/buy-iphone/iphone-15-pro" class="button" style="position: absolute; top: 30%; left: 49%; ">Buy Now</a>
+    </div>
+</section>
+
+    <section class="section-fullscreen">
+        <div class="container" style="position: relative; height: 120vh; margin-top: -12px; margin-bottom: -10px;">
+            <img src="https://www.apple.com/v/iphone-15/c/images/meta/iphone-15_overview__gm0jynt55aai_og.png?202406180149" style="margin-top: 100px; height: 100vh; ">
+            <p class="top center" style="font-size: 80px; font-weight: 700; margin-top: -52%; color: #2d2d2d;">University Students</p>
+            <p class="top center" style="font-size: 30px; margin-top: -10%; color: #060606;">Go Further With Mac </p><br>
+            <a href="https://www.apple.com/in/iphone-15/" class="button" style="position: absolute; top: 26%; left: 46%;">Learn More</a>
+        </div>
+    </section>
+    <!-- Section 4 -->
+    <section class="section-tiles">
+        <div class="tile" style="background-image: url('https://www.apple.com/v/macbook-pro/ak/images/meta/macbook-pro__gbe9ldc6evue_og.png?202406200601');">
+            <div class="tile-content tile-content-top">
+                <p style="font-size: 38px; color: #000;">MacBook Pro</p>
+                <p style="color: #080808; font-size: 20px;">Mind blowing. Head turning</p>
+            </div>
+            <div class="tile-content tile-content-bottom">
+                <a href="https://www.apple.com/in/macbook-pro/" class="button">Learn more</a>
+                <a href="https://www.apple.com/in/shop/buy-mac/macbook-pro" class="button">Buy</a>
+            </div>
+        </div>
+        <div class="tile" style="background-image: url('https://www.apple.com/newsroom/images/2024/05/apple-unveils-stunning-new-ipad-pro-with-m4-chip-and-apple-pencil-pro/tile/Apple-iPad-Pro-hero-240507.jpg.news_app_ed.jpg');">
+            <div class="tile-content tile-content-top">
+                <p style="font-size: 38px;">iPad Pro</p>
+                <p style="font-size: 20px;">Unbeliveably thin. Incredibly powerful.</p>
+            </div>
+            <div class="tile-content tile-content-bottom">
+                <a href="https://www.apple.com/in/ipad-pro/" class="button">Learn more</a>
+                <a href="https://www.apple.com/in/shop/buy-ipad/ipad-pro" class="button">Buy</a>
+            </div>
+        </div>
+        <div class="tile" style="background-image: url('https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-model-unselect-gallery-1-202405_FMT_WHH?wid=1280&hei=720&fmt=p-jpg&qlt=95&.v=1713559203897');">
+            <div class="tile-content tile-content-top">
+                <p style="font-size: 38px; color: #000;">iPad air</p>
+                <p style="font-size: 20px; color: #000;">Two sizes. Faster chip. Does it all.</p>
+            </div>
+            <div class="tile-content tile-content-bottom">
+                <a href="https://www.apple.com/in/ipad-air/" class="button">Learn More</a>
+                <a href="https://www.apple.com/in/shop/buy-ipad/ipad-air" class="button">Buy</a>
+            </div>
+        </div>
+        <div class="tile" style="background-image: url('https://www.tapscape.com/wp-content/uploads/2019/02/MACBOOK-AIR.jpg');">
+            <div class="tile-content tile-content-top">
+                <h2 style="color: #080808; font-size: 38px;">MacBook Air</h2>
+                <p style="color: #080808; font-size: 20px;">Supercharged by M3</p>
+            </div>
+            <div class="tile-content tile-content-bottom">
+                <a href="https://www.apple.com/in/macbook-air/" class="button">Learn More</a>
+                <a href="https://www.apple.com/in/shop/buy-mac/macbook-air" class="button">Buy</a>
+            </div>
+        </div>
+        <div class="tile" style="background-image: url('https://www.apple.com/newsroom/images/2023/09/apple-unveils-apple-watch-ultra-2/tile/Apple-Watch-Ultra-2-hero-230912.jpg.news_app_ed.jpg');">
+            <div class="tile-content tile-content-top">
+                <h2 style="color: #080808; font-size: 38px;">Ultra 2</h2>
+                <p style="color: #080808; font-size: 20px;">To Wear it is to love it.</p>
+            </div>
+            <div class="tile-content tile-content-bottom">
+                <a href="https://www.apple.com/in/shop/buy-watch" class="button">Learn more</a>
+                <a href="https://www.apple.com/in/shop/buy-watch/apple-watch-ultra" class="button">Buy</a>
+            </div>
+        </div>
+        <div class="tile" style="background-image: url('https://www.loomo.com.ua/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBY2c9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3b9dcda1f96ea549fba371dabd0f88ea5ad5f90/Image%20(1).png?locale=uk');">
+            <div class="tile-content tile-content-top">
+                <h2 style="color: #080808; font-size: 38px;">Trade In</h2>
+                <p style="color: #080808; font-size: 20px;">Upgrade and Save it's easy.</p>
+            </div>
+            <div class="tile-content tile-content-bottom">
+                <a href="https://www.apple.com/in/shop/trade-in" class="button">Get an estimate</a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <p style="text-align: left; margin-left: 20%; margin-right: 20%; color: #a7a5a5;">
+            ‡No Cost EMI is available with the purchase of an eligible product made using qualifying cards on 3- or 6-month tenures from most leading banks. Until 6 August 2024, No Cost EMI is available with the purchase of an eligible iPhone made using qualifying cards on 3-, 6-, 9-, 12-, 18- or 24-month tenures from most leadings banks. Monthly pricing is rounded to the nearest rupee. Exact pricing will be provided by your bank, subject to your bank’s terms and conditions. Minimum order spend applies as per your card-issuing bank threshold. Offer cannot be combined with Apple Store for Education or Corporate Employee Purchase Plan pricing. Card eligibility is subject to terms and conditions between you and your card-issuing bank. Offer may be revised or withdrawn at any time without any prior notice. Terms apply.<br><br>
+Representative example:<br><br>
+Based off a 6-month tenure. ₹79900.00 total cost includes 15% p.a. and No Cost EMI savings of ₹3380.00, paid over 6 months as six monthly payments of ₹13317.00.<br><br>
+Based off a 24-month tenure. ₹79900.00 total cost includes 15% p.a. and No Cost EMI savings of ₹11242.00, paid over 24 months as 24 monthly payments of ₹3329.00.<br> <br>
+*Qualified purchasers can receive promotion savings when they purchase an eligible product with promotion product at a qualifying location. Only one promotion product per eligible product per qualified purchaser. Offer is subject to availability. Subject to terms and conditions herein.
+A subscription is required for Apple TV+.
+        </p>
+    </section>
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="footer-column">
+            <div class="footer-column">
+                <h3>Column 1</h3>
+                <ul>
+                    <li><a href="https://www.apple.com/in/store" style="color: #5b5a5a; font-size: 13px;">Store</a></li>
+                    <li><a href="https://www.apple.com/in/mac/" style="color: #5b5a5a; font-size: 13px;">Mac</a></li>
+                    <li><a href="https://www.apple.com/in/ipad/" style="color: #5b5a5a; font-size: 13px;">iPad</a></li>
+                    <li><a href="https://www.apple.com/in/iphone/" style="color: #5b5a5a; font-size: 13px;">iPhone</a></li>
+                    <li><a href="https://www.apple.com/in/watch/" style="color: #5b5a5a; font-size: 13px;">Watch</a></li>
+                    <li><a href="https://www.apple.com/in/airpods/" style="color: #5b5a5a; font-size: 13px;">AirPods</a></li>
+                    <li><a href="https://www.apple.com/in/tv-home/" style="color: #5b5a5a; font-size: 13px;">TV & Home</a></li>
+                    <li><a href="https://www.apple.com/in/airtag/" style="color: #5b5a5a; font-size: 13px;">AirTags</a></li>
+                    <li><a href="https://www.apple.com/in/shop/accessories/all" style="color: #5b5a5a; font-size: 13px;">Accessories</a></li>
+                    <li><a href="https://apple.com/in/shop/gift-cards" style="color: #5b5a5a; font-size: 13px;">Gift Cards</a></li>
+                    <h3>Apple Wallet</h3>
+                    <li><a href="https://www.apple.com/in/wallet/" style="color: #5b5a5a; font-size: 13px;">Wallet</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Account</h3>
+            <ul>
+                <li><a href="https://appleid.apple.com/in/" style="color: #5b5a5a; font-size: 13px;">Manage Your Apple ID</a></li>
+                <li><a href="appleid.apple.com/in/" style="color: #5b5a5a; font-size: 13px;">Apple Store Account</a></li>
+                <li><a href="https://www.icloud.com/" style="color: #5b5a5a; font-size: 13px;">iCloud.com</a></li>
+            </ul>
+            <h3>Entertainment</h3>
+            <ul>
+                <li><a href="https://www.apple.com/in/apple-one/" style="color: #5b5a5a; font-size: 13px;">Apple One</a></li>
+                <li><a href="https://www.apple.com/in/apple-tv-plus/" style="color: #5b5a5a; font-size: 13px;">Apple TV+</a></li>
+                <li><a href="https://www.apple.com/in/apple-music/" style="color: #5b5a5a; font-size: 13px;">Apple Music</a></li>
+                <li><a href="https://www.apple.com/in/apple-arcade/" style="color: #5b5a5a; font-size: 13px;">Apple Arcade</a></li>
+                <li><a href="https://www.apple.com/in/apple-podcasts/" style="color: #5b5a5a; font-size: 13px;">Apple Podcasts</a></li>
+                <li><a href="https://www.apple.com/in/apple-books/" style="color: #5b5a5a; font-size: 13px;">Apple Books</a></li>
+                <li><a href="https://www.apple.com/in/app-store/" style="color: #5b5a5a; font-size: 13px;">Apple Store</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Apple Store</h3>
+            <ul>
+                <li><a href="https://www.apple.com/in/retail/" style="color: #5b5a5a; font-size: 13px;">Find a Store</a></li>
+                <li><a href="https://www.apple.com/in/retail/geniusbar/" style="color: #5b5a5a; font-size: 13px;">Genius Bar</a></li>
+                <li><a href="https://www.apple.com/in/today/" style="color: #5b5a5a; font-size: 13px;">Today at Apple</a></li>
+                <li><a href="https://www.apple.com/in/today/groups/" style="color: #5b5a5a; font-size: 13px;">Group Reservations</a></li>
+                <li><a href="https://www.apple.com/in/today/event/apple-camp-story-of-kindness/7201877547704237568/?sn=R756" style="color: #5b5a5a; font-size: 13px;">Apple Camp</a></li>
+                <li><a href="https://www.apple.com/in/shop/trade-in" style="color: #5b5a5a; font-size: 13px;">Apple Trade IN/a></li>
+                <li><a href="https://www.apple.com/in/shop/ways-to-buy" style="color: #5b5a5a; font-size: 13px;">Ways to Buy</a></li>
+                <li><a href="https://www.apple.com/in/recycling/nationalservices/" style="color: #5b5a5a; font-size: 13px;">Recycling Programme</a></li>
+                <li><a href="https://secure6.store.apple.com/in/shop/signIn/orders?ssi=1AAABkD81zPUgtSqEVQsiJnNQq0DMwqfjQHrmYj4F78b4_SGMVyaLwEUAAAA0aHR0cHM6Ly9zZWN1cmU2LnN0b3JlLmFwcGxlLmNvbS9pbi9zaG9wL29yZGVyL2xpc3R8fAACATgbYHKw6m4Xg0K9X1DywjJEz6YQV-1C90rNyS5TvrXT" style="color: #5b5a5a; font-size: 13px;">Order Status</a></li>
+                <li><a href="https://www.apple.com/in/shop/help" style="color: #5b5a5a; font-size: 13px;">Shopping Help</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>For Business</h3>
+            <ul>
+                <li><a href="https://www.apple.com/in/business/" style="color: #5b5a5a; font-size: 13px;">Apple and Bussiness</a></li>
+                <li><a href="https://www.apple.com/in/retail/business/" style="color: #5b5a5a; font-size: 13px;">Shop for Bussiness</a></li>
+            </ul>
+            <h3>For Education</h3>
+            <ul>
+                <li><a href="https://apple.com/in/education/" style="color: #5b5a5a; font-size: 13px;">Apple and Education</a></li>
+                <li><a href="https://www.apple.com/in/education/k12/#how-to-buy" style="color: #5b5a5a; font-size: 13px;">Shop for Education</a></li>
+                <li><a href="https://www.apple.com/in-edu/store" style="color: #5b5a5a; font-size: 13px;">Shop for University</a></li>
+            </ul>
+            <h3>For Healthcare</h3>
+            <ul>
+                <li><a href="https://www.apple.com/in/healthcare/" style="color: #5b5a5a; font-size: 13px;">Apple in Healthcare</a></li>
+                <li><a href="https://www.apple.com/in/healthcare/apple-watch/" style="color: #5b5a5a; font-size: 13px;">Health on Apple Watch</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Additional Footer Links -->
+    <div class="footer-links">
+        <p style="text-align: left;">Copyright © 2024 Apple Inc. All rights reserved. </p>
+        <a href="https://www.apple.com/in/legal/privacy/">Privacy Policy</a>
+        <a href="https://www.apple.com/in/legal/sales-support/sales-policies/retail_in.html">Sales Policy</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.navbar ul');
+            menu.classList.toggle('show');
+        }
+        // Toggle submenu visibility on click for mobile devices
+document.querySelectorAll('.navbar ul li').forEach(item => {
+    item.addEventListener('click', function() {
+        this.querySelector('.submenu').classList.toggle('show');
+    });
+});
+
+    </script>
+</body>
+</html>
