@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Commercial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Wallpoet&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: rgb(12, 12, 12);
+            background-color: #ffffff;
+            overflow-x: hidden; /* Added to remove horizontal scrolling */
+
+        }
+
+        header {
+            background-color:transparent;
+            color: rgb(88, 88, 88);
+            padding: 0px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        #home {
+            background: url('your-background-image.jpg') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .tagline {
+            position: absolute;
+            top: 590px;
+            left: 20px;
+            font-weight: bold;
+            line-height: 1.2;
+            z-index: 1001; /* Ensuring it's above other elements */
+            animation: gradient-animation 5s ease infinite;
+            background: var(--gradient); /* Setting the gradient as background */
+            background-clip: text;
+            -webkit-background-clip: text;
+            color:rgb(213, 209, 209);
+            
+
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+        }
+}
+
+        .tagline p{
+            font-size: 100px;
+        }
+        
+
+
+        #contact {
+            margin: 20px 0;
+        }
+        #features, #specs{
+            margin: 20px 0;
+
+        }
+        .feature, .spec {
+            background: rgb(240, 239, 239);
+            border: 1px solid #6a6969;
+            margin: 20px auto;
+            display: flex;
+            border-radius: 30px;
+            overflow: hidden;
+            max-width: 1000px; /* Added max-width to limit the width of the tiles */
+        }
+
+        .feature img, .spec img {
+            width: 30%;
+            max-width: 100px; /* Reduced max-width to make images smaller */
+
+        }
+
+        .feature .text, .spec .text {
+            padding: 65px;
+            text-align: left;
+            width: 50%;
+        }
+
+        #about-us {
+            color: white;
+            position: relative;
+            width: 100vw;
+            height: 1000px;
+            padding: 100px 20px; /* Increase padding to make the section taller */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;            
+        }
+
+        #about-us .content {
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #121212;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #f5f3f3;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .feature, .spec {
+                flex-direction: column;
+            }
+
+            .feature img, .spec img {
+                width: 100%;
+                height: 200px;
+                max-width: none; /* Reset max-width for smaller screens */
+            }
+
+            .feature .text, .spec .text {
+                width: 100%;
+                padding: 20px;
+            }
+        
+            #about-us {
+                padding: 100px 20px;
+            }
+        }
+            .contact-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-image img {
+                width: 40%;
+                height: auto;
+                flex: 1;
+            }
+            .form-container {
+    max-width: 400px;
+    padding: 20px;
+    border: 2px solid #65b0f6; 
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    margin-top: 20px;
+    flex: 1;
+    transition: border-color 0.5s; /* Adding transition for border color change */
+}
+
+.form-container:hover {
+    background-color:  linear-gradient(45deg, #13c7c7, #3962c9, #9e12c5, #60a3bc, #ef2112);
+ /* Change border color on hover */
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style form inputs */
+.form-container input[type=text], 
+.form-container input[type=email], 
+.form-container textarea {
+    width: calc(100% - 20px); /* Adjusting width to consider padding */
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: none; /* Remove default border */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(245, 240, 240); /* Dark background for inputs */
+    color: #0f0f0f; /* White text */
+    border-color: #0e0e0e;
+}
+
+.form-container textarea {
+    height: 150px;
+}
+
+/* Style form button */
+.form-container button[type=submit] {
+    width: calc(100% - 20px); /* Adjusting width to consider padding */
+    padding: 12px 0; /* Adjusting padding */
+    background: linear-gradient(45deg, #13c7c7, #3962c9, #9e12c5, #60a3bc, #ef2112);
+    background-size: 400% 400%;
+    color: rgb(16, 15, 15);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-position 1s ease-in-out, padding 0.5s; /* Adding transition for background and padding */
+}
+
+.form-container button[type=submit]:hover {
+    background-position: right center;
+    padding: 12px 20px; /* Adjusting padding on hover */
+}
+#intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1300px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #0e0e0e;
+    margin-top: -50px;
+    margin-bottom: -130px;
+}
+
+.large-paragraph {
+    font-size: 20px;
+    text-align: center;
+    margin: 0 200px;
+    max-width: 1100px;
+    margin-bottom: 90px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+/* Style for the image and button row */
+.image-button-row {
+    display: flex;
+    align-items: left;
+    margin-top: 70px; /* Adjust the margin-top as per your design */
+}
+
+.image-button-row .image {
+    width: 200px; /* Adjust image width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between image and button */
+}
+
+.image-button-row .button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.text-overlay {
+            position: absolute;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            
+        }
+        .container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.bottom-right {
+  position: absolute;
+  bottom: 450px;
+  right: 16px;
+  font-size: 30px;
+}
+.tagline {
+    font-family: "Wallpoet", sans-serif;
+
+            font-size: 40px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            background: linear-gradient(to right, #f5f3f3 0%, #939391  10%, #f8f8f8 20%);
+            background-size: 200%; /* Ensure the gradient covers the entire width */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+            animation-fill-mode: forwards;
+            -webkit-text-size-adjust: none;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        @-webkit-keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .wrap{width:100%;}
+.gradient-text{
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color:rgb(253, 248, 248);
+  font-size:8rem;
+  width:110vw;
+  margin:15vh auto;
+  display:block;
+  text-align:center;
+  transition: color .1s ease-in-out;
+  text-transform:uppercase;
+  font-style: normal;
+  margin-left: -390px;
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 950;
+  font-style: normal;
+}
+
+    </style>
+    <link rel="icon" href="bmw (2).svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-lights" style="background-color: #a8a7a72e;">
+            <a class="navbar-brand text-white" href="#">Car Commercial</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#feat">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#about-us">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#spec">Specifications</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
+   
+    <section>
+   
+            <div class="tagline">
+                <p style="font-size: 160px; margin-left: 140px;">THE 3.0 CSL</p>
+            </div>
+    
+                    <img src="https://www.motortrend.com/uploads/2022/11/BMW-3.0-CSL-22.png"  alt="Image 6" style="width: 1600px; height: 829px; margin-top: -100px; margin-left: -30px;">
+        </div>
+    </section>
+    <section id="intro-section">
+        <div class="centered-content">
+            <p class="large-paragraph">
+                A crowning finale of an anniversary year marked by fascinating highlights: The BMW 3.0 CSL is the most exclusive automobile BMW M has ever produced and combines a unique design with a puristic performance experience. The exceptional high-performance car conveys to the present day in an extremely focused manner the concept created in the 1970s of applying racetrack technology designed for sheer driving pleasure on the road. All facets of its character – dynamic exterior elegance, a classic sportscar cockpit, intelligent lightweight construction, a straight 6-cylinder engine, manual transmission and rear-wheel drive – are based on traditional principles of a BMW M automobile. They complement each other with the help of the latest technology to create the ultimate symbol of fascination for top performance in the style of the brand that has been successful for 50 years.
+            </p>
+            <p1 class="small-para">BMW 3.0 CSL: CO2 emissions combined in g/km 249 (WLTP) Fuel consumption combined in l/100km 11.0 (WLTP) </p1>
+            
+            <!-- New row for image and button -->
+            <div class="row mt-4">
+                <div class="col-md-6 text-center">
+                    <img src="https://ifdalivestorage.blob.core.windows.net/user-uploads/4170/180788/00000000-0000-0000-0000-000000000000/02_BMW_3_0_CLS_HOMMAGE_R_Heck.jpg" style="height: 80%; width:70%; border-radius: 20px; margin-right: -150px;margin-top: 30px; margin-bottom: 0px;" alt="Image Description" class="img-fluid">
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                    <ul style="  list-style-type: none; margin-top: 60px;">
+                        <li><p style="text-align: left; margin-left: -292px; font-size: 40px;">THE BMW 3.0 <br>CSL*</p>        </li>
+                        <li><a href="https://youtu.be/oSpdlJRTTNk?si=t0sqD-K0j-7UL6hc" class="btn btn-primary btn-lg" style="margin-left: -422px;">Start Video ↗</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section id="feat">
+        <div class="row mt-4">
+            <div class="col-md-6 text-center">
+                <img style="height: 320px; width: 550px; margin-top: 30px; margin-left: 250px;" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/m-automobile/3-0-csl/bmw-3-0-csl-mg-03.png?imwidth=1280" alt="Advanced Technology">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <ul style="  list-style-type: none; margin-top: 60px;">
+                    <li><p style="text-align: left; margin-left: -292px; font-size: 50px;" data-aos="fade-left">UNMISTAKABLY<br>DESIGN.</p>        </li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img style="height: 300px; width: 420px; margin-right: -1320px; margin-top: -40px;" src="https://imgd.aeplcdn.com//642x361//n/cw/ec/136019/dashboard7.jpeg?isig=0" alt="Luxurious Comfort">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <ul style="  list-style-type: none; margin-top: 60px;">
+                    <li><p style="text-align: left; margin-left: -1092px; font-size: 20px;" data-aos="fade-right">Emotional encounter with the <br>history and the present of<br> the world’s most powerful letter:<br> numerous exclusive details <br>are unmistakably based on the <br>design of the legendary <br>coupe from the 1970s.</p>        </li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img style="height: 400px; width: 460px; margin-top: -290px; margin-right: -415px;" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/m-automobile/3-0-csl/bmw-3-0-csl-ai-04.png?imwidth=1280" alt="Top-notch Performance">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <ul style="  list-style-type: none; margin-top: 60px;">
+                    <li><p style="text-align: left; margin-left: 22px; font-size: 20px;" data-aos="fade-left">BMW M is part of an exceptional motorsport history and stands for a passion for high performance.<br> One that can be felt every day – on the street or on the racetrack.<br> What makes BMW M a trailblazer is the engineers’ passion for combining<br> authentic motorsport functionality with exclusive and sporty aesthetics.</p>        </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section id="about-us" style="">
+        <div class="content" style="height: 900px; width: 1550px;">
+            <video autoplay loop muted playsinline>
+                <source src="750.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="wrap">
+                <div class="text-overlay" data-aos="fade-left" style="margin-top: 300px;">
+                    <p class="gradient-text">Sheer Driving Pleasure</p>
+                </div>
+             </div>
+            
+            
+            <div class="text-overlay" data-aos="fade-right" style="margin-top: 600px; font-size: 40px; margin-left: 190px;">
+                <p>The Ultimate Driving Machine</p>
+            </div>
+            </video>
+        </div>
+    </section>
+
+    
+    <section id="spec">
+        <div class="row mt-4">
+            <div class="col-md-6 text-center">
+                <img style="height: 414px; width: 612px; margin-top: 30px; margin-left: 190px;" data-aos="fade-up" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/m-automobile/3-0-csl/bmw-3-0-csl-ai-07.png?imwidth=1280" alt="Advanced Technology">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <ul style="  list-style-type: none; margin-top: 60px;">
+                    <li><h1 style="text-align: left; margin-left: 92px; " data-aos="fade-up"> HIGH-<br>PERFORMANCE<br>BY TRADITION</h1></li>
+                    <li><p style="text-align: left; margin-left: 92px; font-size: 20px;" data-aos="fade-up">The version of inline 6-cylinder engine with M TwinPower Turbo technology, which was further developed exclusively for the BMW 3.0 CSL, mobilises a maximum output of 412 kW (560 hp). Thus, the model features the most powerful straight-six engine ever used in a road-legal BMW M automobile. The power unit possesses the same technological roots as the power unit of the current DTM winning car. The 3.0-litre power unit offers spontaneous high revving thanks to the typical M high-revving concept and comprises, among other things, an extremely rigid crankcase in a sleeveless closed-deck design, a forged lightweight crankshaft and a cylinder head core featuring 3D printing technology. The cooling system and oil supply are also designed for highly dynamic driving situations.</p>        </li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img style="height: 414px; width: 612px; margin-right: -1340px; margin-top: 30px;" data-aos="fade-up" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/m-automobile/3-0-csl/bmw-3-0-csl-ai-02.png?imwidth=1280" alt="Luxurious Comfort">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <ul style="  list-style-type: none; margin-top: 60px;">
+                    <li><h1 style="text-align: left; margin-left: -1000px; " data-aos="fade-up"> LIGHT-<br>WEIGHT CONSTRUCTION</h1></li>
+                    <li><p style="text-align: left; margin-left: -1000px; font-size: 20px;" data-aos="fade-up">Maximum use of carbon components.<br>
+                        To reduce weight in the body and chassis areas,<br> carbon fibre reinforced plastic (CFRP) is used to an<br> exceptionally high extent in addition to the minimal use of<br> insulating material. The BMW 3.0 CSL features CFRP<br> components on virtually all bodywork sections.<br> In addition to the roof, bonnet and boot lid,<Br> the front and rear aprons are made entirely of carbon. <br>The front and rear side panel attachments, the <br>side sills, the rear diffuser, the rear wing and rear<br> spoiler are also made of the high-tech material.<br> All carbon components are manufactured in small<br> series, mostly by hand and exclusively for the BMW<br> 3.0 CSL. Another highlight in terms of weight <br>reduction: The titanium rear silencer is around<br> 4.3 kilograms lighter than a conventional component.</p>        </li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img style="height: 441px; width: 612px; margin-top: 30px; margin-left: 92px; "data-aos="fade-up" src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/m-automobile/3-0-csl/bmw-3-0-csl-ai-01.png?imwidth=1280" alt="Top-notch Performance">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <ul style="  list-style-type: none; margin-top: 30px;">
+                    <li><h1 style="text-align: left; margin-left: -12px; " data-aos="fade-up"> ELABORATE<br>PAINTWORK</h1></li>
+                    <li><p style="text-align: left; margin-left: -12px; font-size: 20px;" data-aos="fade-up">Alpine white uni with elaborately applied stripe decor.
+                        Both the base colour and the M stripes, known in technical jargon as livery, are applied <br>largely by hand, involving an extremely high level of time and<br> effort. A total of 22 individual parts are painted in a process specially designed <br>for the BMW 3.0 CSL. Particular attention is paid to a highly precise arrangement of the areas of the body surfaces and livery stripes finished <br>in visible carbon. In general, most of the exterior in Alpine white uni comprises carbon components, which are hand-painted by specialists.The high-quality material is only visible in the lettering on the roof, on the rear wing, the sills and the lower parts of the bumpers. For this purpose, these areas must be exposed during the painting process. In order to precisely position the livery stripes in the BMW M GmbH colours, the painters use masking by means of <br>laser projection as well as customised contour films.</p>        </li>
+                </ul>
+            </div>
+        </div>    
+    </section>
+    
+    <section id="outro-section" style="margin-top: 110px; margin-bottom: 110px;">
+        <div class="centered-content">
+            <h1>REINCARNATION OF A LEGEND.            </h1>
+            <p class="large-paragraph">
+                As the reincarnation of a legendary sports car both for the racetrack and the road, the BMW 3.0 CSL possesses all the characteristics of a puristic car. It embodies the joy of classic driving and an awareness of the traditional roots of BMW M GmbH in a uniquely exclusive form. Its eponymous role model is considered the first automobile to carry the DNA for maximum driving pleasure and passion, an unmistakeable feature of BMW M automobiles to this very day. 1972, in the founding year of the former BMW Motorsport GmbH, now BMW M GmbH, the BMW 3.0 CSL was developed for use in touring car competitions, where it became the most successful racing car of its era.
+            </p>
+            <a href="https://www.bmw-m.com/en/topics/magazine-article-pool/bmw-3-0-csl.html">Experience more about the 1973 BMW 3.0 CSL</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <img src="https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/m-automobile/3-0-csl/bmw-3-0-csl-cp-01.png?imwidth=1280" alt="Snow" style="width:1465px; margin-left: -180px;">
+            <div class="bottom-right">THE ULTIMATE EXPRESSION <br>OF M LEGACY</div>
+          </div>
+    </section>
+    <section>
+        <div class="centered-content">
+            <p>*Model is sold out</p>
+            <p class="large-paragraph">
+                The models illustrated include optional equipment.
+Due to regular software updates, screen designs in the communication may differ from the actual screen design in your car.
+Official data on power consumption and electric range were determined in accordance with the mandatory measurement procedure and comply with Regulation (EU) 715/2007 valid at the time of type approval. In case of a range, figures in the NEDC take into account differences in the selected wheel and tire size; figures in the WLTP take into account any optional equipment. WLTP values are used for assessing taxes and other vehicle-related charges that are (also) based on CO2 emissions, as well as for the purposes of vehicle-specific subsidies, if applicable. Where applicable, the NEDC values listed were calculated based on the new WLTP measurement procedure and then converted back to the NEDC measurement procedure for comparability reasons. For newly type-tested vehicles since 01.01.2021, the official data no longer exist according to NEDC, but only according to WLTP. For more information on the WLTP and NEDC measurement procedures, <a href="https://www.bmw.com/wltp">see more.</a>
+For further information about the official fuel consumption and the specific CO2 emission of new passenger cars can be taken out of the "handbook of fuel consumption, the CO2 emission and power consumption of new passenger cars", which is available at all selling points and at <a href="https://www.dat.de/co2/">here.</a>
+All vehicles, equipment, combination possibilities and varieties shown here are examples and can differ in your country. In no way do they constitute a binding offer by the BMW M GmbH. Visit your local BMW website or see your authorised BMW M Retailer for accurate details on the offers in your country.
+            </p>
+        </div>
+    </section>
+    <footer>
+        <p style="color: #0e0e0e;">&copy; 2024 Car Commercial. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        let navbarHidden = false;
+    
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+            if (scrollTop > lastScrollTop) {
+                // Scroll down
+                if (!navbarHidden) {
+                    header.style.transform = 'translateY(-100%)';
+                    navbarHidden = true;
+                }
+            } else {
+                // Scroll up
+                if (navbarHidden) {
+                    header.style.transform = 'translateY(0)';
+                    navbarHidden = false;
+                }
+            }
+    
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+    
+    
+    <script>
+        AOS.init();
+        
+    </script>
+    
+
+</body>
+</html>
